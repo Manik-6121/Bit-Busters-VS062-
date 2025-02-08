@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <label for="chart-type">Select Chart Type:</label>
+        <select id="chart-type">
+            <option value="bar">Bar Chart</option>
+            <option value="line">Line Chart</option>
+            <option value="breakdown">Spending Breakdown</option> <!-- Option for spending breakdown chart -->
+            <option value="pie">Pie Chart</option> <!-- Option for pie chart -->
+
+            
+
+        </select>
+
+    <h1>Expense Tracker</h1> <!-- Main heading for the expense tracker page -->
+        <p>Welcome! Please <a href="auth.html">login</a> or <a href="auth.html">sign up</a> to continue.</p> <!-- Links to authentication page -->
+
+
+
+        <form id="expense-form"> <!-- Form for adding new expenses -->
+
+            <input type="text" id="expense-name" placeholder="Expense Name" required>
+            <input type="number" id="expense-amount" placeholder="Amount" required>
+            <select id="expense-category">
+                <option value="food">Food</option>
+                <option value="transport">Transport</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="utilities">Utilities</option>
+            </select>
+            <button type="submit">Add Expense</button>
+        </form>
+        <div id="expense-list"></div> <!-- Container for displaying the list of expenses -->
+
+        <canvas id="bar-chart"></canvas> <!-- Canvas for rendering the bar chart -->
+        <canvas id="line-chart"></canvas> <!-- Canvas for rendering the line chart -->
+        <canvas id="pie-chart"></canvas> <!-- Canvas for rendering the pie chart -->
+        <canvas id="breakdown-chart"></canvas> <!-- Canvas for rendering the spending breakdown chart -->
+
+
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="charts.js"></script>
+</body>
+</html>

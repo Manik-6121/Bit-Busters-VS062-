@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Authentication</h1> <!-- Main heading for the authentication page -->
+
+        <div id="auth-toggle"> <!-- Toggle buttons for switching between login and signup forms -->
+
+            <button id="show-login">Login</button> <!-- Button to show the login form -->
+
+            <button id="show-signup">Sign Up</button> <!-- Button to show the signup form -->
+
+        </div>
+        
+        <form id="login-form" style="display: none;"> <!-- Login form, initially hidden -->
+
+            <input type="text" id="username" placeholder="Username" required> <!-- Username input field -->
+
+            <input type="password" id="password" placeholder="Password" required> <!-- Password input field -->
+
+            <button type="submit" onclick="handleLogin()">Login</button> <!-- Submit button for the login form -->
+
+
+        </form>
+
+        <form id="signup-form" style="display: none;"> <!-- Signup form, initially hidden -->
+
+            <input type="text" id="new-username" placeholder="Username" required> <!-- New username input field for signup -->
+
+            <input type="password" id="new-password" placeholder="Password" required> <!-- New password input field for signup -->
+
+            <button type="submit" onclick="handleSignup()">Sign Up</button> <!-- Submit button for the signup form -->
+
+
+        </form>
+    </div>
+
+    <script> // JavaScript for toggling between login and signup forms
+
+        document.getElementById('show-login').addEventListener('click', function() { // Event listener for showing the login form and hiding the signup form
+
+
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('signup-form').style.display = 'none';
+        });
+
+        document.getElementById('show-signup').addEventListener('click', function() { // Event listener for showing the signup form and hiding the login form
+
+
+            document.getElementById('signup-form').style.display = 'block';
+            document.getElementById('login-form').style.display = 'none';
+        });
+    function handleLogin() {
+        // Get username and password values
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Validate username and password criteria here
+        // Redirect to index.html if valid
+        window.location.href = 'index.html'; // Redirect to index.html after successful login
+    }
+
+    function handleSignup() {
+        // Get new username and password values
+        const newUsername = document.getElementById('new-username').value;
+        const newPassword = document.getElementById('new-password').value;
+
+        // Validate new username and password criteria here
+        // Redirect to index.html if valid
+        window.location.href = 'index.html'; // Redirect to index.html after successful signup
+    }
+    </script>
+
+</body>
+</html>
