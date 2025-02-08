@@ -1,79 +1,108 @@
-/**
- * Function to render the expense chart with animations
- * This function creates a chart based on the selected type and
- * retrieves data from Local Storage to display.
- */
-function renderChart(chartType, ctx) {
-    const expenses = JSON.parse(localStorage.getItem('expenses')) || []; // Retrieve expenses from Local Storage or initialize an empty array
+// Function to render all charts using the same data
+function renderCharts(expenses) {
+    const ctxBar = document.getElementById('bar-chart').getContext('2d');
+    const ctxLine = document.getElementById('line-chart').getContext('2d');
+    const ctxPie = document.getElementById('pie-chart').getContext('2d');
 
-    const labels = expenses.map(exp => exp.name); // Create an array of expense names for the chart labels
-    const data = expenses.map(exp => exp.amount); // Create an array of expense amounts for the chart data
+    // Clear previous chart instances if they exist
+    if (window.myBarChart) {
+        window.myBarChart.destroy(); // Clear previous bar chart instance
+    }
+    if (window.myLineChart) {
+        window.myLineChart.destroy(); // Clear previous line chart instance
+    }
+    if (window.myPieChart) {
+        window.myPieChart.destroy(); // Clear previous pie chart instance
+    }
 
-    const chartData = { // Data structure for the chart
-        labels: labels,
+    const categories = [...new Set(expenses.map(expense => expense.category))]; // Get unique categories
+    const categoryColors = {
+        food: 'rgba(75, 192, 192, 0.6)',
+        transport: 'rgba(255, 99, 132, 0.6)',
+        entertainment: 'rgba(54, 162, 235, 0.6)',
+        utilities: 'rgba(255, 206, 86, 0.6)',
+    };
+
+    const data = {
+        labels: categories,
         datasets: [{
             label: 'Expenses',
-            data: data,
-            backgroundColor: 'rgba(75, 192, 192, 0.2)', // Background color for the chart bars
-            borderColor: 'rgba(75, 192, 192, 1)', // Border color for the chart bars
-            borderWidth: 1 // Width of the border
+            data: categories.map(category => {
+                return expenses
+                    .filter(expense => expense.category === category)
+                    .reduce((total, expense) => total + expense.amount, 0);
+            }),
+            backgroundColor: categories.map(category => categoryColors[category] || 'rgba(0, 0, 0, 0.6)'),
+            borderColor: categories.map(category => categoryColors[category] || 'rgba(0, 0, 0, 1)'),
+            borderWidth: 1
+        },
+        {
+            label: 'Savings',
+            data: [parseFloat(localStorage.getItem('monthlyAllowance')) - expenses.reduce((total, expense) => total + expense.amount, 0)],
+            backgroundColor: 'rgba(0, 255, 0, 0.6)', // Change savings color to green
+            borderColor: 'rgba(0, 255, 0, 1)', // Change savings border color to green
+            borderWidth: 1
         }]
     };
 
-    const chartOptions = { // Options for configuring the chart's appearance and behavior
-        animation: {
-            duration: 1000, // Animation duration
-            easing: 'easeOutBounce' // Animation easing
-        },
-        scales: {
-            y: {
-                beginAtZero: true // Start the y-axis at zero
+    // Bar Chart Configuration
+    const barConfig = {
+        type: 'bar',
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
             }
         }
     };
 
-    // Clear the previous chart instance if it exists
-    if (window.expenseChart) {
-        window.expenseChart.destroy(); // Destroy the previous chart instance
-    }
+    // Line Chart Configuration
+    const lineConfig = {
+        type: 'line',
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
 
-    // Create a new chart instance based on the selected chart type
-    window.expenseChart = new Chart(ctx, {
-        type: chartType, // Type of chart (bar, line, pie, etc.)
-        data: chartData, // Data for the chart
-        options: chartOptions // Options for the chart
-    });
+    // Pie Chart Configuration
+    const pieConfig = {
+        type: 'pie',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': ₹' + tooltipItem.raw;
+                        }
+                    }
+                }
+            }
+        }
+    };
+
+    // Create chart instances
+    window.myBarChart = new Chart(ctxBar, barConfig); // Store the bar chart instance
+    window.myLineChart = new Chart(ctxLine, lineConfig); // Store the line chart instance
+    window.myPieChart = new Chart(ctxPie, pieConfig); // Store the pie chart instance
 }
 
-/**
- * Function to render all types of charts
- * This function creates multiple charts for different visualizations of expenses.
- */
-function renderAllCharts() {
-    const barChartCtx = document.getElementById('bar-chart').getContext('2d'); // Get context for bar chart
-    const lineChartCtx = document.getElementById('line-chart').getContext('2d'); // Get context for line chart
-    const pieChartCtx = document.getElementById('pie-chart').getContext('2d'); // Get context for pie chart
-
-    renderChart('bar', barChartCtx); // Render bar chart
-    renderChart('line', lineChartCtx); // Render line chart
-    renderChart('pie', pieChartCtx); // Render pie chart
+// Function to update all charts when expenses change
+function updateCharts() {
+    const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+    renderCharts(expenses);
 }
 
-/**
- * Event listener for chart type selection
- * This listener updates the chart when the user selects a different chart type.
- */
-document.getElementById('chart-type').addEventListener('change', function() {
-    const selectedType = this.value; // Retrieve the selected chart type from the dropdown
-    if (selectedType === 'breakdown') {
-        renderSpendingBreakdown(); // Render the spending breakdown chart
-    } else {
-        renderAllCharts(); // Render all charts
-    }
-});
-
-/**
- * Initial render with all chart types
- * This renders all charts when the page loads.
- */
-renderAllCharts(); // Render all charts on page load
+// Call to render all charts initially
+updateCharts();

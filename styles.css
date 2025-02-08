@@ -1,7 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font family for the entire page */
     background-color: #f0f4f8; /* Light background color for better contrast */
-    background-image: url();
+    background-image: url('backimage.jpg');
     margin: 0; /* Remove default margin */
     padding: 20px; /* Add padding around the body */
     color: #343a40; /* Dark gray text color */

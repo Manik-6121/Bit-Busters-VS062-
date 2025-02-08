@@ -17,24 +17,23 @@
 </head>
 <body>
     <div class="container">
-        <label for="chart-type">Select Chart Type:</label>
-        <select id="chart-type">
-            <option value="bar">Bar Chart</option>
-            <option value="line">Line Chart</option>
-            <option value="breakdown">Spending Breakdown</option> <!-- Option for spending breakdown chart -->
-            <option value="pie">Pie Chart</option> <!-- Option for pie chart -->
-
-            
+        <!-- Chart type selection removed -->
 
         </select>
 
-    <h1>Expense Tracker</h1> <!-- Main heading for the expense tracker page -->
-        <p>Welcome! Please <a href="auth.html">login</a> or <a href="auth.html">sign up</a> to continue.</p> <!-- Links to authentication page -->
+        <h1> Student Expense Tracker</h1> <!-- Main heading for the expense tracker page -->
+        <p>Welcome, User ! </p> <!-- Display username and logout option -->
 
+        <div>
+            <label for="monthly-allowance">Monthly Allowance:</label>
+            <input type="number" id="monthly-allowance" placeholder="Enter your monthly allowance" />
+            <button id="set-allowance">Set Allowance</button>
+        </div>
 
-
+        <div id="savings-display">
+            <h2>Savings: <span id="savings-amount">0</span></h2>
+        </div>
         <form id="expense-form"> <!-- Form for adding new expenses -->
-
             <input type="text" id="expense-name" placeholder="Expense Name" required>
             <input type="number" id="expense-amount" placeholder="Amount" required>
             <select id="expense-category">
@@ -46,16 +45,21 @@
             <button type="submit">Add Expense</button>
         </form>
         <div id="expense-list"></div> <!-- Container for displaying the list of expenses -->
+        <div style="border: 1px solid #ccc; padding: 10px; margin-top: 20px;">
+            <h2>Recommendations:</h2>
+            <ul id="recommendations-list"></ul> <!-- Container for displaying recommendations -->
+        </div>
+        <h2>Graph Section</h2> <!-- Label for the graph section -->
 
         <canvas id="bar-chart"></canvas> <!-- Canvas for rendering the bar chart -->
         <canvas id="line-chart"></canvas> <!-- Canvas for rendering the line chart -->
         <canvas id="pie-chart"></canvas> <!-- Canvas for rendering the pie chart -->
-        <canvas id="breakdown-chart"></canvas> <!-- Canvas for rendering the spending breakdown chart -->
-
+        <button id="logout-button" onclick="handleLogout()">Logout</button> <!-- Button for logging out of the application -->
 
     </div>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="charts.js"></script>
+    
 </body>
 </html>
