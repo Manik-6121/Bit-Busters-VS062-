@@ -6,38 +6,25 @@ html {
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
-    /*background-color: #f0f0f0;
-    color: #333;*/
-    background: linear-gradient(to right, #3f82a3, white);
+    background: linear-gradient(270deg, #ea7dca, #6dd898, #c3f474, #8094ed);
+    background-size: 400% 400%;
+    animation: gradientFlow 8s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+}
 }
 
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 15px 20px;
-}
 
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: background 0.3s;
-}
-
-.navbar a:hover {
-    width: 100px;
-    height: 50px;
-    background-color:rgb(233, 218, 213) ;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    transition: box-shadow 0.3s ease;
-}
 
 
 .logo {
@@ -46,14 +33,14 @@ body {
 
 
 .header {
-    background-color: crimson;
+    background-image : url(front.jpg);
     background-size: cover;
     background-position: center;
     height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    color:#660015;
+    color:#b42e49;
     text-shadow: 2px 2px 4px  white;
     font-size: 3rem;
     text-align: center;
@@ -64,259 +51,10 @@ body {
 
 .paragraph p{
     margin:20px 0;
-}
-
-
-.home_body{
-    padding: 40px 20px;
     text-align: center;
-}
-
-
-.container{
-    display: grid;
-    grid-template-columns: auto auto auto auto ;
-    grid-template-rows: auto auto auto auto;
-    
-    grid-template-areas:
-    "section_1 section_2 section_3 section_4";
-    
-    gap: 10px;
-    height: 10vh;
+    padding: 60px 20px;
 
 }
-   
-.section_1{
-   grid-area: section_1;
-   padding: 20px;
-   text-align: center;
-
-   mix-blend-mode: multiply;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.section_2{
-   grid-area: section_2;
-   padding: 20px;
-   text-align: center;
-
-   mix-blend-mode: multiply;
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-}
-
-.section_3{
-    grid-area: section_3;
-    padding: 20px;
-    text-align: center;
-
-    mix-blend-mode: multiply;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
- 
-.section_4{
-    grid-area: section_4;
-    padding: 20px;
-    text-align: center;
-
-    mix-blend-mode: multiply;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
-.collection{
-    padding: 80px 60px;
-    text-align: center;
-    color: white;
-    background-image: url(collection.jpg);
-}
-
-
-.collection_1{
-    padding: 40px 20px;
-    text-align: center;
-}
-
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 150px;
-}
-
-
-.gallery img {
-    width: 150%;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.3s;
-}
-
-
-.gallery img:hover {
-    transform: scale(1.05);
-    background-color: skyblue;
-    box-shadow:0 0 10px red, 0 0 20px blue, 
-               0 0 30px green, 0 0 40px yellow, 
-               0 0 50px pink, 0 0 60px violet;
-}
-
-
-.glow-button {
-    background-color : rgb(233, 218, 213);
-    border: none;
-    color: black;
-    padding: 15px 30px;
-    text-align: center;
-    font-size: 16px;
-    border-radius: 10px;
-    transition: box-shadow 0.3s ease-in-out;
-    cursor: pointer;
-}
-
-
-.glow-button:hover {
-    box-shadow: 0 0 10px rgb(233, 218, 213),
-                0 0 20px rgb(233, 218, 213),
-                0 0 30px rgb(233, 218, 213),
-                0 0 40px rgb(233, 218, 213);
-}
-
-
-.services{
-    padding: 80px 60px;
-    text-align: center;
-    color: white;
-    background-image: url(services.jpg);
-}
-
-
-.services_1{
-    padding: 80px 60px;
-    text-align: center;
-}
-
-
-.services p {
-    margin:20px 0;
-}
-
-
-.container_1{
-     display: grid;
-     grid-template-columns: 700px 700px;
-     grid-template-rows: auto auto;
-     
-     grid-template-areas:
-     "portrait maternity";
-     
-     gap: 10px;
-     height: 10vh;
-
-}
-   
-
-.sd{
-    grid-area: portrait;
-    padding: 20px;
-    text-align: center;
-}
-
-
-.ct{
-    grid-area: maternity;
-    padding: 20px;
-    text-align: center;
-}
-
-
-.container_2{
-    display: grid;
-    grid-template-columns: 700px 700px;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-    "family event";
-    
-    gap: 10px;
-    height: 10vh;
-}
-
-   
-.ict{
-   grid-area: family;
-   padding: 20px;
-   text-align: center;
-}
-
-
-.ist{
-   grid-area: event;
-   padding: 20px;
-   text-align: center;
-}
-
-
-.container_3{
-    display: grid;
-    grid-template-columns: 700px 700px;
-    grid-template-rows: auto auto;
-    
-    grid-template-areas:
-    "birthday personal";
-    
-    gap: 10px;
-    height: 10vh;
-}
-
-
-.cct{
-   grid-area: birthday;
-   padding: 20px;
-   text-align: center;
-}
-
-
-.wc{
-   grid-area: personal;
-   padding: 20px;
-   text-align: center;
-}
-
-
-.container_4{
-    display: grid;
-    grid-template-columns: 700px 700px;
-    grid-template-rows: auto auto;
-    
-    grid-template-areas:
-    "vlog content";
-    
-    gap: 10px;
-    height: 10vh;
-}
-   
-
-.cd{
-   grid-area: vlog;
-   padding: 20px;
-   text-align: center;
-}
-
-
-.shows{
-   grid-area: content;
-   padding: 20px;
-   text-align: center;
-}
-
-
 section {
     padding: 60px 20px;
     margin-top: 60px;
@@ -360,94 +98,5 @@ h2 {
 
 .signup-button:hover {
     background-color: #f0f0f0
-}
+} 
 
-
-.contact p {
-    margin: 5px 0;
-}
-
-
-.container_5{
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    
-    grid-template-areas:
-    "phone email"
-    "social app";
-    
-    gap: 10px;
-    height: 10vh;
-}
-
-.phone{
-    grid-area: phone;
-    padding: 20px;
-    text-align: center;
- }
- 
- .email{
-    grid-area: email;
-    padding: 20px;
-    text-align: center;
- }
-
-.social{
-   grid-area: social;
-   padding: 20px;
-   text-align: center;
-}
-
-.app{
-   grid-area: app;
-   padding: 20px;
-   text-align: center;
-}
-
-
-a[href="https://www.facebook.com/login/"]
-{
-    color:#183051;
-    text-decoration:none;
-}
-
-
-a[href="https://x.com/i/flow/login"]
-{
-    color:#183051;
-    text-decoration:none;
-}
-
-
-a[href="https://www.instagram.com/accounts/login/"]
-{
-    color:#183051;
-    text-decoration:none;
-}
-
-
-a[href="https://in.pinterest.com/login/"]
-{
-    color:#183051;
-    text-decoration:none;
-}
-
-
-a[href="https://play.google.com/store/apps?hl=es_419"]
-{
-    color:#183051;
-    text-decoration:none;
-}
-
-
-a[href="https://www.apple.com/in/app-store/"]
-{
-    color:#183051;
-    text-decoration:none;
-}
-
-
-a:hover{
-    color: blue;
-}
