@@ -152,13 +152,7 @@ function editExpense(index) {
     updateChart(); // Call to update the chart after displaying expenses
 }
 
-/**
- * Function to handle logout
- */
-function handleLogout() {
-    localStorage.removeItem('username'); // Remove username from local storage
-    document.getElementById('username-display').textContent = ''; // Clear the displayed username
-}
+
 
 /**
  * Initial display of expenses
