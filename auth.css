@@ -1,26 +1,35 @@
 /* Styles for the authentication page */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font family for the authentication page */
-    background-color: #f0f4f8; /* Light background color for better contrast */
+    /*background: linear-gradient(to right, #cb1177, #fc255b); Gradient background */
+    /*   background-image: url('image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+
     margin: 0; /* Remove default margin */
     padding: 20px; /* Add padding around the body */
-    color: #343a40; /* Dark gray text color */
+    color: #ffffff; /* White text color for better contrast on gradient */
+
 }
 
 /* Container for the authentication forms */
 .container {
     max-width: 400px; /* Maximum width of the container */
     margin: auto; /* Center the container */
-    background: white; /* White background for the container */
-    padding: 20px; /* Padding inside the container */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+    background: transparent; /* White background for the container */
+    text-align: center;
+    justify-content: center;    
+    padding: 180px; /* Padding inside the container */
+   /* border-radius: 0; /* Rounded corners */
+   /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+    
 }
 
 /* Center the main heading */
 h1 {
     text-align: center; /* Center the heading */
-    color: #007bff; /* Blue color for the heading */
+    color: rgb(241, 207, 207); /* Blue color for the heading */
 }
 
 /* Style for form elements */
@@ -32,6 +41,9 @@ form {
 /* Style for input fields and buttons */
 input, select, button {
     margin: 10px 0; /* Margin between form elements */
+    border: none; /* Remove border for a cleaner look */
+    border-radius: 5px; /* Rounded corners for input fields and buttons */
+
     padding: 10px; /* Padding inside form elements */
     border: 1px solid #ced4da; /* Light gray border */
     border-radius: 4px; /* Rounded corners for form elements */
@@ -39,7 +51,8 @@ input, select, button {
 
 /* Style for buttons */
 button {
-    background-color: #007bff; /* Blue background for buttons */
+    background-color: #5a67d8; /* Updated button background color */
+
     color: white; /* White text color for buttons */
     border: none; /* Remove border */
     cursor: pointer; /* Pointer cursor on hover */
@@ -47,7 +60,8 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #434190; /* Darker shade on hover */
+
 }
 
 /* Style for the expense list */

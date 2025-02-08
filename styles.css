@@ -1,6 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font family for the entire page */
     background-color: #f0f4f8; /* Light background color for better contrast */
+    background-image: url();
     margin: 0; /* Remove default margin */
     padding: 20px; /* Add padding around the body */
     color: #343a40; /* Dark gray text color */
@@ -10,7 +11,7 @@ body {
 .container {
     max-width: 600px; /* Maximum width of the container */
     margin: auto; /* Center the container */
-    background: white; /* White background for the container */
+    background-color: transparent; /* White background for the container */
     padding: 20px; /* Padding inside the container */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
